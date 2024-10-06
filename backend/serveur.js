@@ -52,7 +52,7 @@ app.post('/chat', async (req, res) => {
 });
 
 // Middleware pour servir les fichiers statiques du front-end
-app.use(express.static(path.join(__dirname, '../src/build')));
+app.use(express.static(path.join(__dirname, '../build')));
 
 // Lance le serveur
 app.listen(PORT, () => {
