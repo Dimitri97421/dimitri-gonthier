@@ -317,6 +317,8 @@ $couleur-tertiaire: #fdf6e3;
         display: flex;
         flex-direction: column;
         align-items: center;
+        min-height: 110px;
+        justify-content: space-between;
 
         button{
           border: 2px solid $couleur-tertiaire;
