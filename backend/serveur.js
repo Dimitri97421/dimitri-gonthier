@@ -54,11 +54,6 @@ app.post('/chat', async (req, res) => {
 // Middleware pour servir les fichiers statiques du front-end
 app.use(express.static(path.join(__dirname, '../src/build')));
 
-// Route pour toutes les autres requêtes, rediriger vers le front-end
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../src/build', 'index.html'));
-});
-
 // Lance le serveur
 app.listen(PORT, () => {
     console.log(`Serveur en cours d'exécution sur http://localhost:${PORT}`);
