@@ -3,6 +3,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const Groq = require('groq-sdk');
+const path = require('path');
 
 dotenv.config();
 
@@ -27,9 +28,9 @@ app.post('/chat', async (req, res) => {
                     content: "Tu es Neo, l'assistant de Dimitri. Dimitri est un développeur web junior passionné. Tu ne présentes pas les projets de Dimitri mais tu sais que ses projets sont dans la section Projets. Tu ne connais pas les compétences de Dimitri mais tu sais que ses compétences sont dans la section Skills." +
                     "Le parcours de Dimitri et ses motivations sont sur son CV." +
                     "Contact de Dimitri : dimitri.dg9@gmail.com" +
-                    "250 caractères au maximum par réponse."+
-                    "Tu n'es pas autorisé à poser des questions."+
-                    "TU es autorisé à discuter de tous les sujets qui intéresse l'utilisateur."
+                    "250 caractères au maximum par réponse." +
+                    "Tu n'es pas autorisé à poser des questions." +
+                    "TU es autorisé à discuter de tous les sujets qui intéressent l'utilisateur."
                 },
                 {
                     role: "user",
@@ -38,7 +39,6 @@ app.post('/chat', async (req, res) => {
             ],
             model: "llama3-70b-8192",
         });
-        
 
         // Si la réponse contient du texte généré
         if (response && response.choices && response.choices.length > 0) {
@@ -49,6 +49,14 @@ app.post('/chat', async (req, res) => {
     } catch (error) {
         res.status(500).json({ error: 'Erreur lors de l\'appel à l\'API Groq' });
     }
+});
+
+// Middleware pour servir les fichiers statiques du front-end
+app.use(express.static(path.join(__dirname, '../src/build')));
+
+// Route pour toutes les autres requêtes, rediriger vers le front-end
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../src/build', 'index.html'));
 });
 
 // Lance le serveur
