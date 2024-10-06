@@ -37,17 +37,18 @@ const ChatBot = () => {
             <div 
                 onClick={toggleChat}
                 style={{ 
-                    width: '60px', 
-                    height: '60px', 
-                    backgroundColor: 'brown', 
+                    width: '65px', 
+                    height: '65px', 
+                    backgroundColor: 'chocolate',
+                    border: '2px solid white',
                     borderRadius: '50%', 
                     display: 'flex', 
-                    alignItems: 'center', 
+                    alignItems: 'center',
                     justifyContent: 'center', 
                     cursor: 'pointer' 
                 }}
             >
-                <img src={bot} style={{height:'39px', borderRadius:'50px'}} alt='Neo, le bot'/>
+                <img src={bot} style={{height:'42px'}} alt='Neo, le bot'/>
             </div>
 
             {/* Fenêtre de chat */}
