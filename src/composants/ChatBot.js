@@ -6,9 +6,11 @@ const ChatBot = () => {
     const [response, setResponse] = useState('');
     const [isChatOpen, setIsChatOpen] = useState(false);
 
+    const API_URL = process.env.NODE_ENV === 'production' ? '/chat' : 'http://localhost:5000/chat';
+
     const handleSendMessage = async () => {
         try {
-            const res = await fetch('http://localhost:5000/chat', {
+            const res = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
