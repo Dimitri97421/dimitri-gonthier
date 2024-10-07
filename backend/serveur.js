@@ -51,6 +51,43 @@ app.post('/chat', async (req, res) => {
     }
 });
 
+const nodemailer = require('nodemailer');
+
+// Configuration du transporteur de mail
+const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
+    },
+});
+
+app.post('/contact', (req, res) => {
+    const { firstName, lastName, email, message } = req.body;
+
+    if (!firstName || !lastName || !email) {
+        return res.status(400).json({ error: 'Tous les champs sont requis.' });
+    }
+
+    // Options de l'email
+    const mailOptions = {
+        from: email,
+        to: 'dimitri.dg9@gmail.com',
+        subject: `Message de ${firstName} ${lastName} depuis le portfolio`,
+        text: `${message}`,
+    };
+
+    // Envoie l'email
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error(error);
+            return res.status(500).json({ error: 'Erreur lors de l\'envoi de l\'email' });
+        }
+        res.status(200).json({ message: 'Email envoyé avec succès !' });
+    });
+});
+
+
 // Middleware pour servir les fichiers statiques du front-end
 app.use(express.static(path.join(__dirname, '../build')));
 
