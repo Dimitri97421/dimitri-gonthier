@@ -8,13 +8,16 @@ const Formulaire = ({ isOpen, handleClose }) => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const API_URL = process.env.NODE_ENV === 'production' ? '/contact' : 'http://localhost:5000/contact';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
-    if (!firstName || !lastName || !email) {
+    if (!firstName || !lastName || !email || message.trim() === '') {
       setError("Tous les champs sont requis.");
+      setIsSubmitting(false);
       return;
     }
 
@@ -44,6 +47,8 @@ const Formulaire = ({ isOpen, handleClose }) => {
       }
     } catch (err) {
       setError("Impossible de contacter le serveur.");
+    } finally{
+      setIsSubmitting(false);
     }
   };
 
@@ -54,7 +59,7 @@ const Formulaire = ({ isOpen, handleClose }) => {
       </Modal.Header>
       <Modal.Body>
         {success ? (
-          <p>Votre message a été envoyé avec succès !</p>
+          <p>Message envoyé avec succès ! Je vous répondrai dès que possible. À très bientôt.</p>
         ) : (
           <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="lastName">
@@ -103,8 +108,8 @@ const Formulaire = ({ isOpen, handleClose }) => {
 
             {error && <p style={{ color: 'red' }}>{error}</p>}
 
-            <Button variant="primary" type="submit" style={{backgroundColor: 'brown', borderColor: 'transparent'}}>
-              Envoyer
+            <Button variant="primary" type="submit" style={{ backgroundColor: 'brown', borderColor: 'transparent' }}>
+              {isSubmitting ? 'Envoi...' : 'Envoyer'}
             </Button>
           </Form>
         )}

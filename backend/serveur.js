@@ -65,14 +65,11 @@ const transporter = nodemailer.createTransport({
 app.post('/contact', (req, res) => {
     const { firstName, lastName, email, message } = req.body;
 
-    if (!firstName || !lastName || !email) {
-        return res.status(400).json({ error: 'Tous les champs sont requis.' });
-    }
-
     // Options de l'email
     const mailOptions = {
         from: email,
         to: 'dimitri.dg9@gmail.com',
+        replyTo: email,
         subject: `Message de ${firstName} ${lastName} depuis le portfolio`,
         text: `${message}`,
     };
