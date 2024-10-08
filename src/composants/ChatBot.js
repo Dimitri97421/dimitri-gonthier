@@ -5,10 +5,12 @@ const ChatBot = () => {
     const [input, setInput] = useState('');
     const [response, setResponse] = useState('');
     const [isChatOpen, setIsChatOpen] = useState(false);
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const API_URL = process.env.NODE_ENV === 'production' ? '/chat' : 'http://localhost:5000/chat';
 
     const handleSendMessage = async () => {
+        setIsSubmitting(true);
         try {
             const res = await fetch(API_URL, {
                 method: 'POST',
@@ -22,6 +24,8 @@ const ChatBot = () => {
             setResponse(data.generated_text || 'Je dois me reposer un moment, revenez un peu plus tard.');
         } catch (error) {
             setResponse('Erreur lors de l\'envoi de la requête.');
+        } finally{
+            setIsSubmitting(false);
         }
     };
 
@@ -29,7 +33,7 @@ const ChatBot = () => {
         setIsChatOpen(!isChatOpen);
     };
 
-    const isButtonDisabled = !input.trim();
+    const isButtonDisabled = !input.trim() || isSubmitting;
 
     return (
         <div style={{ position: 'fixed', bottom: '65px', right: '15px', zIndex: 1000}}>
@@ -81,20 +85,20 @@ const ChatBot = () => {
                             border: '1px solid #ccc' 
                         }}
                     />
-                    <button 
-                        onClick={handleSendMessage} 
-                        style={{ 
-                            padding: '10px', 
-                            marginTop: '10px', 
+                    <button
+                        onClick={handleSendMessage}
+                        style={{
+                            padding: '10px',
+                            marginTop: '10px',
                             width: '100%',
                             cursor: isButtonDisabled ? 'not-allowed' : 'pointer',
-                            backgroundColor: isButtonDisabled ? '#ccc' : 'brown', 
+                            backgroundColor: isButtonDisabled ? 'grey' : 'brown',
                             color: 'white',
                             border: 'none',
-                        }} 
+                        }}
                         disabled={isButtonDisabled}
                     >
-                        Envoyer
+                        {isSubmitting ? 'Envoi...' : 'Envoyer'}
                     </button>
                     <div 
                         style={{ 

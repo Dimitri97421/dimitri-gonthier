@@ -108,7 +108,7 @@ const Formulaire = ({ isOpen, handleClose }) => {
 
             {error && <p style={{ color: 'red' }}>{error}</p>}
 
-            <Button variant="primary" type="submit" style={{ backgroundColor: 'brown', borderColor: 'transparent' }}>
+            <Button disabled={isSubmitting} variant="primary" type="submit" style={{ backgroundColor: 'brown', borderColor: 'transparent', cursor: isSubmitting ? 'not-allowed' : 'pointer',}}>
               {isSubmitting ? 'Envoi...' : 'Envoyer'}
             </Button>
           </Form>
