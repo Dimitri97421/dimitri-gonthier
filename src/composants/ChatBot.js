@@ -75,8 +75,8 @@ const ChatBot = () => {
                         id="chatInput"
                         value={input}
                         onChange={(e) => setInput(e.target.value)}
-                        placeholder="Vous voulez mieux connaître Dimitri ou simplement discuter ? Je vous écoute :"
-                        rows={3}
+                        placeholder="Envie d'en savoir plus sur Dimitri ou de discuter ? Je vous écoute !"
+                        rows={2}
                         style={{ 
                             padding: '10px', 
                             width: '100%', 

@@ -70,7 +70,7 @@ app.post('/contact', (req, res) => {
         from: email,
         to: 'dimitri.dg9@gmail.com',
         replyTo: email,
-        subject: `Message de ${firstName} ${lastName} depuis le portfolio`,
+        subject: `Message de ${lastName} ${firstName} depuis le portfolio`,
         text: `${message}`,
     };
 
