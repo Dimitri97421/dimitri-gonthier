@@ -57,7 +57,8 @@ const RadarChart = ({ initialData = [], labels = [] }) => {
             pointLabels: {
               color: '#fff',
               font: {
-                size: 20
+                size: 16,
+                weight: 1000
               }
             },
           }
