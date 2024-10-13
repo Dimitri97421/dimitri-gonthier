@@ -281,7 +281,7 @@ $couleur-tertiaire: #fdf6e3;
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    margin-top: 200px;
+    margin-top: 150px;
     margin-bottom: 50px;
     .projects_list{
       display: flex;
@@ -290,6 +290,17 @@ $couleur-tertiaire: #fdf6e3;
       width: 67%;
       flex-wrap: wrap;
       gap: 30px;
+    }
+
+    .pagination{
+      display: flex;
+      width: 180px;
+      justify-content: space-evenly;
+      button{
+        border-radius: 5px;
+        border: 2px solid $couleur-tertiaire;
+        margin-top: 40px;
+      }
     }
 
     .container{
