@@ -105,7 +105,7 @@ const RadarChart = ({ initialData = [], labels = [] }) => {
   }, [initialData, labels]);
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '65vh' }}>
+    <div style={{ position: 'relative', width: '100%', height: '65vh'}}>
       <canvas ref={canvasRef} />
     </div>
   );

@@ -90,12 +90,12 @@ $couleur-tertiaire: #fdf6e3;
 
   img{
     width: 250px;
-    height: 250px;
     object-fit: cover;
-    border-radius: 180px;
-    border: 1px solid black;
+    border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+    border: 2px solid $couleur-tertiaire;
     z-index: 1;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(4px);
   }
 
   @keyframes appear {
@@ -122,7 +122,7 @@ $couleur-tertiaire: #fdf6e3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(4px);
     z-index: 2;
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
     gap: 20px;
 
     h1,h2{
@@ -266,7 +266,7 @@ $couleur-tertiaire: #fdf6e3;
     z-index: 5;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(4px);
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.1);
     button{
       border: 2px solid $couleur-tertiaire;
       color: $couleur-tertiaire;
@@ -304,7 +304,7 @@ $couleur-tertiaire: #fdf6e3;
       border: 2px solid $couleur-tertiaire;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
       backdrop-filter: blur(4px);
-      background-color: rgba(255, 255, 255, 0.2);
+      background-color: rgba(255, 255, 255, 0.1);
       margin: 0;
 
       img{
