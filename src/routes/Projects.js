@@ -14,6 +14,8 @@ import PhotoP10_1 from '../img/Prj10.1.webp';
 import PhotoP10_2 from '../img/Prj10.2.webp';
 import PhotoP11_1 from '../img/Prj11.1.webp';
 import PhotoP11_2 from '../img/Prj11.2.webp';
+import PhotoWeather_1 from '../img/Weather.1.webp';
+import PhotoWeather_2 from '../img/Weather.2.webp';
 import Modale from '../composants/Modale';
 
 const Projects = () => {
@@ -27,6 +29,7 @@ const Projects = () => {
   const imagesP9 = [PhotoP9_1, PhotoP9_2];
   const imagesP10 = [PhotoP10_1, PhotoP10_2];
   const imagesP11 = [PhotoP11_1, PhotoP11_2];
+  const imagesWeather = [PhotoWeather_1, PhotoWeather_2];
 
   const projects = [
     {
@@ -40,6 +43,12 @@ const Projects = () => {
       title: "Page web dynamique en JavaScript avec une API",
       description: <>Création d'un site web dynamique en communiquant avec une API<br/><br/>Compétences : JavaScript / Postman <br/><br/>Lien GitHub : <a href='https://github.com/Dimitri97421/Projet_6_OC' target="_blank" rel="noopener noreferrer">github.com/Dimitri97421/Projet_6_OC</a></>,
       year: 2023
+    },
+    {
+      img: imagesWeather,
+      title: "Application web de météo mondiale en TypeScript",
+      description: <>Application web dynamique qui fournit des informations météorologiques précises et en temps réel pour les utilisateurs du monde entier.<br/><br/>Compétences : JavaScript / TypeScript <br/><br/>Lien GitHub Pages : <a href='https://dimitri97421.github.io/weather-app/' target="_blank" rel="noopener noreferrer">https://dimitri97421.github.io/weather-app/</a></>,
+      year: 2024
     },
     {
       img: imagesP8,
